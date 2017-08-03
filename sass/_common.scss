@@ -1,0 +1,862 @@
+// common
+
+//* {
+//  -webkit-touch-callout: none;
+//  -webkit-user-select: none;
+//  -moz-user-select: none;
+//  -ms-user-select: none;
+//  user-select: none;
+//}
+
+html, body {
+  @include size;
+  //-webkit-user-select: none;
+  //user-select: none;
+}
+
+body {
+  font-family: Arial, "微软雅黑";
+  font-size: 12px;
+  line-height: 22px;
+  color: #414141;
+  overflow: hidden;
+}
+
+p {
+  margin: 0;
+  line-height: 0.4rem;
+  //font-size: 15px;
+}
+
+img {
+  @include wh(100%, auto);
+}
+
+.container {
+  min-height: 100%;
+  max-width: 640px;
+  @include wh(100%, 11rem);
+  overflow: hidden;
+}
+
+.content {
+  @include wh(200%, 100%);
+  overflow: hidden;
+}
+
+.drag-page {
+  @include wh(50%, 100%);
+  float: left;
+  overflow: hidden;
+  position: relative;
+}
+
+.drag-page-size {
+  @include wh(11.36rem, 100%);
+  position: absolute;
+}
+
+.page-size {
+  @include wh(6.4rem, 100%);
+  position: absolute;
+}
+
+.score {
+  z-index: 999;
+}
+
+.loading{
+  @extend .page-size;
+  z-index: 999;
+  opacity: 1;
+  //@include bg('../assets/bg/loading-bg.jpg');
+  .loading-com{
+    @include center();
+    @include pos(50%,50%);
+    @include wh(2.8rem,2.8rem);
+    .loading-earth{
+      //@include bg('../assets/components/loading-earth.png');
+      @include center;
+      @include pos(50%,50%);
+      @include wh(83%,83%);
+    }
+    .loading-halo{
+      //@include bg('../assets/components/loading-halo.png');
+      @include wh(100%,100%);
+    }
+  }
+  p{
+    @include center;
+    @include pos(50%,50%);
+    font-family: fangzheng;
+    font-size: 0.8rem;
+  }
+}
+
+#page1 {
+  @extend .page-size;
+  @include bg("../assets/bg/page1-home.jpg");
+}
+
+#page2 {
+  @extend .page-size;
+  @include bg("../assets/bg/page2-desert.jpg")
+}
+
+#page3 {
+  @extend .drag-page-size;
+  @include bg("../assets/bg/room-light.jpg");
+  left: 0;
+}
+
+#page3_dark {
+  @extend .drag-page-size;
+  @include bg("../assets/bg/room-dark.jpg");
+}
+
+#page4 {
+  position: relative;
+  @include wh(11.36rem, 100%);
+}
+
+.page4-bg {
+  @extend .drag-page-size;
+  @include bg('../assets/bg/kitchen.jpg');
+  left: -1.66rem;
+}
+
+#page5 {
+  @extend .drag-page-size;
+  left: -3.8rem;
+  @include bg('../assets/bg/page5.jpg');
+  .elevator {
+    display: inline-block;
+    width: 78%;
+    height: 100%;
+    float: left;
+
+  }
+  .stairs {
+    display: inline-block;
+    width: 22%;
+    height: 100%;
+    float: right;
+  }
+  .btn {
+    @include pos(4.3rem, 6.95rem);
+    width: 1.1rem;
+    .btn-sig {
+      @include pos(0.9rem, 0.47rem);
+      width: 0.23rem;
+      z-index: 3;
+    }
+    .btn-halo {
+      @include pos(0, 0);
+      @extend .halo-twinkle;
+    }
+  }
+  .point-2 {
+    @include pos(8.5rem, 8.6rem);
+    z-index: 88;
+    width: 1.2rem;
+    @extend .halo-twinkle;
+  }
+}
+
+#page6 {
+  @extend .drag-page-size;
+  @include bg('../assets/bg/page6-traffic.jpg');
+  left: -1.95rem;
+  .car {
+    @include wh(13%, 10%);
+    @include pos(50%, 36.5%);
+    .car-sig {
+      @include pos(0.2rem, 0.05rem);
+      z-index: 3;
+    }
+    .car-halo {
+      @include pos(0.1rem, 0);
+      z-index: 1;
+      @extend .halo-twinkle;
+    }
+  }
+  .bus {
+    @include wh(18%, 14%);
+    @include pos(47%, 58%);
+    .bus-sig {
+      z-index: 3;
+      @include pos(0.1rem, 0.16rem);
+    }
+    .bus-halo {
+      z-index: 1;
+      @include pos(0, 0.06rem);
+      @extend .halo-twinkle;
+    }
+  }
+  .bike {
+    @include wh(38%, 23%);
+    @include pos(67%, 41%);
+    .bike-sig {
+      @include pos(0.2rem, 0.2rem);
+      z-index: 3;
+      img {
+        height: 2.2rem;
+      }
+    }
+    .bike-halo {
+      @include pos(0.07rem, 0.2rem);
+      @extend .halo-twinkle;
+    }
+  }
+}
+
+#page7 {
+  @extend .page-size;
+  @include bg('../assets/bg/page7.jpg');
+}
+
+.components {
+  position: absolute;
+}
+
+.button {
+  position: absolute;
+  bottom: 0.8rem;
+  border: 3px solid green;
+  background: #fff;
+  opacity: 0.7;
+  font-weight: 900;
+  padding: 0.15rem 0.2rem;
+  left: 50%;
+  width: 51%;
+  font-size: 0.25rem;
+  @include center;
+  @include text_align(center);
+}
+
+.point {
+  @include bg('../assets/icon/pointing-right.png');
+  animation: point_move 0.8s infinite alternate;
+  -webkit-animation: point_move 0.8s infinite alternate; /*Safari and Chrome*/
+  background-size: 100% 100%;
+  position: absolute;
+  top: 6rem;
+  @include wh(1rem, 1rem);
+}
+
+.audio-horn {
+  position: absolute;
+  top: 0;
+  right: 0;
+  width: 0.8rem;
+  margin: 0.1rem 0;
+}
+
+@include keyframes(point_move) {
+  from {
+    right: 10px;
+  }
+  to {
+    right: 0px;
+  }
+}
+
+@include keyframes(cloudMove){
+  from, to {
+    -webkit-transform: translate3d(0, 0, 0);
+    transform: translate3d(0, 0, 0);
+  }
+
+  10%, 30%, 50%, 70%, 90% {
+    -webkit-transform: translate3d(-10px, 0, 0);
+    transform: translate3d(-10px, 0, 0);
+  }
+
+  20%, 40%, 60%, 80% {
+    -webkit-transform: translate3d(10px, 0, 0);
+    transform: translate3d(10px, 0, 0);
+  }
+}
+
+.page1 {
+  .alert {
+    @include center;
+    @include pos(7rem, 50%);
+    z-index: 999;
+    width: 80%;
+    text-indent: 0.5rem;
+    color: #067390;
+    border: 0 !important;
+    @include scorePadding;
+
+    p {
+      font-size: 0.22rem;
+    }
+  }
+  .clouds {
+    width: 5.2rem;
+    @include pos(37%, 8.5%);
+    animation: cloudMove 3s infinite alternate;
+    -webkit-animation: cloudMove 3s infinite alternate; /*Safari and Chrome*/
+  }
+
+  .drops {
+    width: 74%;
+    @include pos(50%, 6%);
+    animation: dropsDown 2s infinite;
+    -webkit-animation: dropsDown 2s infinite; /*Safari and Chrome*/
+    .drop-sig{
+      position: absolute;
+      top: 69%;
+      right: -0.5rem;
+      width: 0.5rem;
+    }
+  }
+
+  .earth {
+    width: 97%;
+    @include pos(45%, 1%);
+  }
+
+  .seventh {
+    @include center;
+    position: absolute;
+    left: 45%;
+    bottom: -0.15rem;
+    @include wh(80%, 0.6rem);
+    z-index: 3;
+    display: block;
+    p {
+      font-size: 0.22rem;
+      text-align: center;
+    }
+    div {
+      width: 48%;
+      float: left;
+      padding-left: 0.1rem;
+      //margin: 0 auto;
+    }
+    .logo {
+      @include wh(44%, 100%);
+      position: relative;
+      img {
+        @include wh(auto, 69%);
+        @include center;
+        @include pos(50%,67%);
+      }
+    }
+  }
+}
+
+@include keyframes(dropsDown) {
+  from {
+    top: 48%;
+  }
+  to {
+    top: 52%;
+  }
+}
+
+.page2 {
+  .plant1 {
+    width: 14.4%;
+    @include pos(88.7%, 10.5%);
+  }
+  .plant2 {
+    width: 14.3%;
+    @include pos(74.5%, 75.5%);
+  }
+  .plant3 {
+    width: 17.7%;
+    @include pos(60%, 29%);
+  }
+  .plant4 {
+    width: 14.1%;
+    @include pos(48%, 67.6%);
+  }
+  .plant5 {
+    width: 14%;
+    @include pos(41%, 8.9%);
+  }
+
+  .first {
+    color: #fefefa;
+    @include center;
+    width: 79%;
+    @include pos(28%, 50%);
+    p {
+      font-size: 0.17rem;
+    }
+    p:first-child {
+      @include text_align(left);
+    }
+
+    p:last-child {
+      @include text_align(right);
+    }
+  }
+  .page2-second {
+    @include center;
+    @include pos(3.4rem, 50%);
+    font-size: 0.22rem;
+    width: 80%;
+    line-height: 0.3rem;
+    color: #777;
+    height: 3rem;
+  }
+}
+
+.page3 {
+  .tv {
+    width: 1.5rem;
+    @include pos(3.15rem, 1.05rem);
+  }
+
+  .lamp {
+    width: 1.7rem;
+    @include pos(5.05rem, 9.42rem);
+  }
+  .third {
+    @include center;
+    @include pos(2rem, 50%);
+    width: 80%;
+    text-indent: 0.5rem;
+    color: #067390;
+    border: 4px solid #067390 !important;
+    @include scorePadding;
+
+  }
+  .third p {
+    font-size: 0.22rem;
+  }
+
+  .tv_score {
+    //@include pos(5rem, 3rem);
+    font-size: 0.22rem;
+    @include pos(50%, 50%);
+    @include center;
+    font-weight: 900;
+    @include scorePadding;
+  }
+
+  .lamp_score {
+    @include pos(50%, 50%);
+    @include center;
+    font-size: 0.22rem;
+    font-weight: 900;
+    @include scorePadding;
+  }
+  .point-left {
+    @include pos(3.5rem, 3rem);
+    @include bg('../assets/icon/pointing-left.png');
+    animation: point_left_move 0.8s infinite alternate;
+    -webkit-animation: point_left_move 0.8s infinite alternate; /*Safari and Chrome*/
+  }
+  .point-right{
+    p{
+      font-size: 0.22rem;
+      color: #057792;
+      @include pos(-0.2rem,0);
+    }
+  }
+  .point-lamp {
+    @extend .point;
+    @include pos(5.61rem, 8.6rem);
+    //@include bg('../assets/icon/pointing-right.png');
+    //animation: point_lamp_move 0.8s infinite alternate;
+    //-webkit-animation: point_lamp_move 0.8s infinite alternate; /*Safari and Chrome*/
+  }
+}
+
+@include keyframes(point_left_move) {
+  from {
+    left: 3rem;
+  }
+  to {
+    left: 2.9rem;
+  }
+}
+
+@include keyframes(point_lamp_move) {
+  from {
+    left: 8.6rem;
+  }
+  to {
+    left: 8.5rem;
+  }
+}
+
+.score {
+  color: #00CC66;
+}
+
+.halo-twinkle {
+  animation: halo-twinkle 0.5s infinite alternate;
+  -webkit-animation: halo-twinkle 0.5s infinite alternate; /*Safari and Chrome*/
+}
+
+@include keyframes(halo-twinkle) {
+  from {
+    opacity: 1;
+  }
+  to {
+    opacity: 0;
+  }
+}
+
+#page4 {
+  .heater-point {
+    @include pos(4.8rem, 0rem);
+    width: 0.6rem;
+    z-index: 888;
+    @extend .halo-twinkle;
+  }
+  .heater {
+    width: 1.3rem;
+    @include pos(2.7rem, -0.5rem);
+    z-index: 3;
+    .heater-sig {
+      width: 80%;
+      @include pos(0.1rem, 0.15rem);
+      z-index: 3;
+    }
+    .halo {
+      @include pos(0, 0);
+      z-index: 1;
+      @extend .halo-twinkle;
+    }
+  }
+  .the_outlet {
+    width: 3rem;
+    @include pos(1.1rem, -0.6rem);
+    z-index: 3;
+  }
+  .the_outlet-sig {
+    width: 93%;
+    @include pos(0.1rem, 0.14rem);
+    z-index: 2;
+  }
+  .halo {
+    @include pos(0, 0);
+    z-index: 1;
+    @extend .halo-twinkle;
+  }
+  .water_drop {
+    width: 0.2rem;
+    @include pos(5.4rem, 5.9rem);
+    animation: drop_down 0.8s infinite;
+    -webkit-animation: drop_down 0.8s infinite; /*Safari and Chrome*/
+  }
+  @include keyframes(drop_down) {
+    from {
+      top: 5.4rem;
+    }
+    to {
+      top: 5.8rem;
+    }
+  }
+  .screen {
+    width: 1.1rem;
+    opacity: 0;
+    @include pos(3.6rem, 0.8rem);
+    .screen-sig {
+      @include pos(0.05rem, 0.1rem);
+      width: 83%;
+      z-index: 3;
+      opacity: 0;
+    }
+    .screen-halo {
+      @include pos(0, 0);
+      z-index: 1;
+      @extend .halo-twinkle;
+    }
+  }
+  #halo {
+    width: 1rem;
+    height: auto;
+    @include pos(3.5rem, 0.8rem);
+    #red_halo {
+      animation: red_halo 1s infinite alternate;
+      -webkit-animation: red_halo 1s infinite; /*Safari and Chrome*/
+    }
+    #yellow_halo {
+      animation: yellow_halo 1s infinite alternate;
+      -webkit-animation: yellow_halo 1s infinite; /*Safari and Chrome*/
+    }
+  }
+  .water-tap {
+    @include wh(1rem, 2rem);
+    @include pos(4.6rem, 5.3rem);
+    .water-tap-sig {
+      width: 64%;
+      @include pos(0.12rem, 0.134rem);
+      z-index: 3;
+    }
+    .water-halo {
+      @include pos(0, 0);
+      z-index: 1;
+      @extend .halo-twinkle;
+    }
+  }
+}
+
+@include keyframes(red_halo) {
+  from {
+    opacity: 1;
+  }
+  to {
+    opacity: 0;
+  }
+}
+
+@include keyframes(yellow_halo) {
+  from {
+    opacity: 0;
+  }
+  to {
+    opacity: 1;
+  }
+}
+
+.page4 {
+  .screen-text {
+    @include center;
+    @include pos(5rem, 50%);
+    width: 80%;
+    color: #777;
+    z-index: 888;
+    @include scorePadding;
+    border: 4px solid #777;
+    p {
+      text-align: center;
+      font-size: 0.22rem;
+    }
+  }
+  .eighth {
+    @include center;
+    @include pos(9rem, 50%);
+    width: 80%;
+    color: #777;
+    z-index: 888;
+    @include scorePadding;
+    border: 4px solid #777;
+  }
+  .eighth p {
+    font-size: 0.22rem;
+    text-align: center;
+  }
+  .drops_score {
+    position: absolute;
+    @include center;
+    top: 50%;
+    left: 50%;
+    width: 5rem;
+    @include scorePadding;
+    p {
+      font-size: 0.22rem;
+      text-align: center;
+    }
+  }
+  .heater_score {
+    position: absolute;
+    @include center;
+    top: 50%;
+    left: 50%;
+    width: 5rem;
+    @include scorePadding;
+    p {
+      font-size: 0.22rem;
+      text-align: center;
+    }
+  }
+  .tenth {
+    @include scorePadding;
+    @include pos(86%, 50%);
+    @include center;
+    width: 4rem;
+    z-index: 888;
+    p {
+      font-size: 0.22rem;
+    }
+  }
+}
+
+.page5 {
+  .eleventh {
+    @include center;
+    @include pos(6.8rem, 50%);
+    width: 80%;
+    color: #422017;
+    z-index: 888;
+    @include scorePadding;
+    border: 4px solid #422017;
+  }
+  .eleventh p {
+    font-size: 0.22rem;
+    text-align: center;
+  }
+  .elevator_score {
+    @include center;
+    @include pos(50%, 50%);
+    width: 5rem;
+    @include scorePadding;
+    p {
+      font-size: 0.22rem;
+      text-align: center;
+    }
+  }
+
+  .stairs_score {
+    @include center;
+    @include pos(50%, 50%);
+    width: 3rem;
+    @include scorePadding;
+    p {
+      font-size: 0.22rem;
+      text-align: center;
+    }
+  }
+
+}
+
+.page6 {
+  .bus_score {
+    @include scorePadding;
+    @include center;
+    @include pos(50%, 50%);
+    width: 5rem;
+    font-size: 17px;
+    p {
+      text-align: center;
+      font-size: 0.22rem;
+    }
+  }
+
+  .bike_score {
+    @include scorePadding;
+    @include center;
+    @include pos(50%, 50%);
+    width: 3rem;
+    font-size: 17px;
+    p {
+      text-align: center;
+      font-size: 0.22rem;
+    }
+  }
+  .fifth {
+    @include center;
+    @include pos(1rem, 50%);
+    width: 80%;
+    z-index: 3;
+    display: block;
+    color: #f57b2e;
+    border: 4px solid #f57b2e !important;
+    background: #fff;
+    padding: 0.15rem 0.2rem;
+    border-radius: 14px;
+    opacity: 0.8;
+    text-align: center;
+  }
+  .fifth p {
+    font-size: 0.22rem;
+    text-align: center;
+  }
+
+}
+
+.page7 {
+  //-webkit-touch-callout: default;
+  //-webkit-user-select: text;
+  //-moz-user-select: text;
+  //-ms-user-select: text;
+  //user-select: text;
+  .ninth {
+    color: #fefefa;
+    @include center;
+    width: 79%;
+    @include pos(53%, 50%);
+  }
+  .sixth {
+    @include center;
+    @include pos(19%, 50%);
+    width: 80%;
+    text-indent: 0.5rem;
+    color: #1b8e46;
+    z-index: 3;
+    display: block;
+    p {
+      font-size: 0.22rem;
+      margin-top: 20px;
+      span {
+        font-family: "fangzheng";
+        font-size: 0.5rem;
+        vertical-align: middle;
+        color: #7cc556;
+        margin: 0 0.08rem;
+      }
+    }
+  }
+  .seventh {
+    @include center;
+    position: absolute;
+    left: 53%;
+    bottom: 1%;
+    @include wh(80%, 0.6rem);
+    color: #fff;
+    z-index: 3;
+    display: block;
+    p {
+      font-size: 0.22rem;
+      text-align: center;
+    }
+    div {
+      width: 48%;
+      float: left;
+      padding-left: 0.3rem;
+      //margin: 0 auto;
+    }
+    .logo {
+      @include wh(24%, 100%);
+      position: relative;
+      img {
+        @include wh(auto, 66%);
+        @include center;
+        @include pos(50%,67%);
+      }
+    }
+  }
+  .qr_code {
+    width: 2rem;
+    @include center;
+    @include pos(69%, 50%);
+  }
+  .call_num {
+    width: 80%;
+    @include center;
+    @include pos(84.5%, 50%);
+    p {
+      font-size: 0.3rem;
+      text-align: center;
+      color: #fff;
+    }
+  }
+  .share_text{
+    @extend .page-size;
+    position: absolute;
+    z-index: 999;
+    .black_bg{
+      background: #000;
+      opacity: 0.6;
+      @include wh(100%,100%);
+    }
+    p{
+      color: #efc5c5;;
+      @include center;
+      font-size: 0.5rem;
+      @include pos(50%,50%);
+      width: 80%;
+      text-align: center;
+      font-family: "fangzheng";
+    }
+  }
+}

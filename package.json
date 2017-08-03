@@ -1,0 +1,25 @@
+{
+  "name": "earth-environmental-day-h5",
+  "version": "1.0.0",
+  "description": "这是一个关于地球环保日的h5页面",
+  "main": "index.js",
+  "dependencies": {},
+  "devDependencies": {
+    "gulp-concat": "^2.6.1",
+    "gulp-jshint": "^2.0.4",
+    "gulp-rename": "^1.2.2",
+    "gulp-sass": "^3.1.0",
+    "gulp-uglify": "^2.1.2",
+    "jshint": "^2.9.4"
+  },
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://YuanZhou3118@bitbucket.org/YuanZhou3118/earth-environmental-day-h5.git"
+  },
+  "author": "",
+  "license": "ISC",
+  "homepage": "https://bitbucket.org/YuanZhou3118/earth-environmental-day-h5#readme"
+}

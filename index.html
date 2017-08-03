@@ -1,0 +1,200 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=640,target-densitydpi=device-dpi">
+    <meta name="apple-mobile-web-app-capable" content="yes">
+    <meta name="x5-fullscreen" content="true">
+    <meta name="full-screen" content="yes">
+    <meta name="format-detection" content="telephone=no,email=no">
+    <meta name="msapplication-tap-highlight" content="no"/>
+    <meta name="author" content="zhouyuan3118@163.com">
+    <title>今天，你“绿”了没？</title>
+    <script src="js/lib/rem.js"></script>
+    <link rel="stylesheet" href="css/main.css">
+</head>
+<body>
+<audio loop="loop" preload="auto" id="bg-music" data-status="play">
+    <source src="assets/music/audio.mp3" type="audio/mp3">
+</audio>
+<audio preload="auto" id="click-voice">
+    <source src="assets/music/click.mp3" type="audio/mp3">
+</audio>
+<audio preload="auto" id="trash-voice">
+    <source src="assets/music/trashcan.mp3" type="audio/mp3">
+</audio>
+<div class="container">
+    <div class="content">
+        <div class="loading" id="loading">
+            <div><img src="assets/bg/loading-bg.jpg"></div>
+            <div class="loading-com">
+                <div class="loading-halo"><img src="assets/components/loading-halo.png"></div>
+                <div class="loading-earth"><img src="assets/components/loading-earth.png"></div>
+            </div>
+            <p><span class="percent" id="percentage">0</span></p>
+        </div>
+        <div class="page page1">
+            <div id="page1"></div>
+            <div class="alert hidden">
+                <p>慧科技携手中国绿化基金会开展“点亮沙洲一片绿”公益活动。</p>
+                <p>参与游戏获取“慧科技绿色基金”，我们就以10元一棵树的标准，与您一道在西北留下绿色足迹。
+                </p>
+            </div>
+            <div class="seventh">
+                <div class="logo">
+                    <img src="assets/icon/logo2.png">
+                </div>
+                <div>
+                    <img src="assets/icon/green-logo.png">
+                </div>
+            </div>
+            <div id="earth" class="earth"><img src="assets/components/earth.png"></div>
+            <div id="clouds" class="clouds"><img src="assets/components/page1-clouds.png"></div>
+            <div id="drops" class="drops">
+                <div><img src="assets/components/page1-drops.png"></div>
+                <div class="drop-sig"><img src="assets/components/page1-drop.png"></div>
+            </div>
+        </div>
+        <div class="page page2 hidden">
+            <div id="page2"></div>
+            <!--<div class="page2-second">-->
+                <!--<p class="p5">荒漠化，正以每年5-7万平方公里的速度侵蚀地球，</p>-->
+                <!--<p class="p6 hidden">温室效应，导致未来百年海平面将上升100cm……</p>-->
+                <!--<p class="p7 hidden">数字离你很远，改变离你很近</p>-->
+            <!--</div>-->
+            <div class="first hidden"><img src="assets/components/text_page2.png"></div>
+            <div id="plant1" class="plant plant1 hidden"><img src="assets/components/page2-plant_one.png"></div>
+            <div id="plant2" class="plant plant2 hidden"><img src="assets/components/page2-plant_two.png"></div>
+            <div id="plant3" class="plant plant3 hidden"><img src="assets/components/page2-plant_three.png"></div>
+            <div id="plant4" class="plant plant4 hidden"><img src="assets/components/page2-plant_four.png"></div>
+            <div id="plant5" class="plant plant5 hidden"><img src="assets/components/page2-plant_five.png"></div>
+            <div class="second button hidden"><p>改善地球环境你也可以<br>点击进入下一屏</p></div>
+        </div>
+        <div class="page page3 drag-page hidden">
+            <div id="page3_dark" data-scale="1"></div>
+            <div id="page3" class="hidden" data-scale="1"></div>
+            <div class="third hidden"><p>当你从睡梦中醒来，有些电器却一夜未眠，快让他们休息一下</p></div>
+            <div class="point point-left hidden"></div>
+            <div class="point point-right hidden"><p>往左滑动</p></div>
+            <div id="point-lamp" class="point-lamp hidden"></div>
+            <div id="lamp" class="lamp components hidden"><img src="assets/components/room-lamp.png"></div>
+            <div class="lamp_score score hidden"><p>关闭台灯，减少0.75kg碳排放，+20环保指数
+            </p></div>
+            <div id="tv" class="tv components hidden"><img src="assets/components/room-tv.png"></div>
+            <div class="tv_score score hidden"><p>关闭待机电视，减少0.02kg碳排放，+20环保指数
+            </p></div>
+            <div class="forth button hidden"><p>点击进入下一屏</p></div>
+        </div>
+        <div class="page page4 drag-page hidden">
+            <div class="eighth hidden"><p>能耗的漏洞无处不在，快把他们找出来</p></div>
+            <!--<div class="tenth hidden"><p>提示:将水龙头关闭,然后将暖气片和出风口拖进垃圾桶,然后点击光晕之后进入下一页</p></div>-->
+            <div id="page4">
+                <div class="page4-bg" id="page4-bg" data-scale="1"></div>
+                <div id="heater-point" class="heater-point"><img src="assets/components/point.png"></div>
+                <div id="heater" data-scale="1" class="heater components">
+                    <svg width="256" height="112" viewBox="0 0 256 112">
+                        <path fill="none" stroke="currentColor" stroke-width="1" d="M8,56 C8,33.90861 25.90861,16 48,16 C70.09139,16 88,33.90861 88,56 C88,78.09139 105.90861,92 128,92 C150.09139,92 160,72 160,56 C160,40 148,24 128,24 C108,24 96,40 96,56 C96,72 105.90861,92 128,92 C154,93 168,78 168,56 C168,33.90861 185.90861,16 208,16 C230.09139,16 248,33.90861 248,56 C248,78.09139 230.09139,96 208,96 L48,96 C25.90861,96 8,78.09139 8,56 Z"/>
+                    </svg>
+                    <div class="heater-sig"><img src="assets/components/kitchen-heater.png"></div>
+                    <div class="halo"><img src="assets/components/heater-halo.png"></div>
+                </div>
+                <div class="water-tap" id="water-tap">
+                    <div class="water-tap-sig"><img src="assets/components/water-tap.png"></div>
+                    <div class="water-halo" id="water-halo"><img src="assets/components/water-tap-halo.png"></div>
+                </div>
+                <div id="water_drop" class="water_drop components"><img src="assets/components/water-drop.png"></div>
+                <div id="the_outlet" data-scale="1" class="the_outlet components">
+                    <div class="the_outlet-sig"><img src="assets/components/kitchen-the_outlet.png"></div>
+                    <div class="halo"><img src="assets/components/the-outlet-halo.png"></div>
+                </div>
+                <div id="screen" data-scale="1" class="screen components">
+                    <div class="screen-sig"><img src="assets/components/kitchen-screen.png"></div>
+                    <div class="screen-halo"><img src="assets/components/screen-halo.png"></div>
+                </div>
+                <!--<div id="halo">-->
+                    <!--<div id="red_halo" data-scale="1" class="red_halo components"><img-->
+                            <!--src="assets/components/red-halo.png">-->
+                    <!--</div>-->
+                    <!--<div id="yellow_halo" data-scale="1" class="yellow_halo components"><img-->
+                            <!--src="assets/components/yellow-halo.png"></div>-->
+                <!--</div>-->
+            </div>
+            <div class="page4-btn button hidden"><p>点击进入下一屏</p></div>
+            <div class="screen-text hidden" id="screen-text"><p>点击开启恒温恒湿恒氧新生活</p></div>
+            <div class="drops_score score hidden"><p>每节约一吨水，可减少0.190kg碳排放，+20环保指数</p></div>
+            <div class="heater_score score hidden"><p>告别耗能电器，换上节能环保新选择，减少18.84kg碳排放，+20环保指数</p></div>
+
+        </div>
+        <div class="page page5 drag-page hidden">
+            <div class="eleventh hidden"><p>即将开始一天的办公室生活，通过行走叫醒“沉睡”身体也是不错的选择喔～</p></div>
+            <div id="page5">
+                <div class="point-2"><img src="assets/components/point2.png"></div>
+                <div class="elevator next" data-meta="elevator" data-score="0" data-weight="-2.18">
+                </div>
+                <div class="btn next" data-meta="elevator" data-score="0" data-weight="-2.18">
+                    <div class="btn-sig next" data-meta="elevator" data-score="0" data-weight="-2.18"><img src="assets/components/btn.png"></div>
+                    <div class="btn-halo next" data-meta="elevator" data-score="0" data-weight="-2.18"><img src="assets/components/btn-halo.png"></div>
+                </div>
+                <div class="stairs next" data-meta="stairs" data-score="10" data-weight="2.18">
+                </div>
+            </div>
+            <div class="elevator_score score hidden"><p>乘坐电梯会增加2.18kg碳排放，地球的负担又增加了一点</p></div>
+            <div class="stairs_score score hidden"><p>行走不“耗电”，相当于减少了2.18kg碳排放，+10环保指数</p></div>
+        </div>
+        <div class="page page6 drag-page hidden">
+            <div class="fifth"><p>用一个绿色的出行方式，开启元气满满的一天吧</p></div>
+            <div id="page6">
+                <div class="car next" data-meta="car" data-score="0" data-weight="0">
+                    <div class="car-sig next" data-meta="car" data-score="0" data-weight="0"><img src="assets/components/car.png"></div>
+                    <div class="car-halo next" data-meta="car" data-score="0" data-weight="0"><img src="assets/components/car-halo.png"></div>
+                </div>
+                <div class="bus next" data-meta="bus" data-score="10" data-weight="2.16">
+                    <div class="bus-sig next" data-meta="bus" data-score="10" data-weight="2.16"><img src="assets/components/bus.png"></div>
+                    <div class="bus-halo next" data-meta="bus" data-score="10" data-weight="2.16"><img src="assets/components/bus-halo.png"></div>
+                </div>
+                <div class="bike next" data-meta="bike" data-score="10" data-weight="2.25">
+                    <div class="bike-sig next" data-meta="bike" data-score="10" data-weight="2.25"><img src="assets/components/bike.png"></div>
+                    <div class="bike-halo next" data-meta="bike" data-score="10" data-weight="2.25"><img src="assets/components/bike-halo.png"></div>
+                </div>
+            </div>
+            <div class="bike_score score hidden"><p>强身健体0能耗，减少2.25kg碳排放，+10环保指数</p></div>
+            <div class="bus_score score hidden"><p>选择公共交通，减少2.16kg碳排放，+10环保指数</p></div>
+        </div>
+        <div class="page page7 hidden">
+            <div id="page7"></div>
+            <!--<div class="ninth"><img src="assets/components/text_page7.png"></div>-->
+            <div class="sixth">
+                <p class="p1">这一天中你一共减少了<span id="weight_total"></span>kgCO²排放，获得了<span id="score_total"></span>分环保指数，赢取了<span>0.1</span>元的慧科技绿色基金！
+                </p>
+                <p class="p2"> 慧科技携手中国绿化基金会，以10元一棵树的标准，在西北种下希望，分享给更多人可再获得50分哦。
+                    快邀请朋友一起参与，印下绿色足迹吧。
+                    <br>
+                </p>
+            </div>
+            <!--<div class="qr_code" style="opacity: 0"></div>-->
+            <div class="qr_code"><img src="assets/icon/qr_code.jpg"></div>
+            <div class="call_num"><p>400 840 5522</p><p>恒温 · 恒湿 · 恒氧</p></div>
+            <div class="seventh">
+                <div class="logo">
+                    <img src="assets/icon/logo2.png">
+                </div>
+                <div>
+                    <img src="assets/icon/green-logo.png">
+                </div>
+            </div>
+            <div class="share_text hidden">
+                <div class="black_bg"></div>
+                <p>感谢参与，活动已截止</p>
+            </div>
+        </div>
+        <div class="audio-horn" id="audio-horn">
+            <img src="assets/icon/audio-horn.png">
+        </div>
+    </div>
+</div>
+<!--<script src="js/lib/jweixin-1.0.0.js"></script>-->
+<script type="text/javascript" src="dist/index.js"></script>
+<!--<script src="js/lib/jquery.cookie.js"></script>-->
+
+</body>
+</html>

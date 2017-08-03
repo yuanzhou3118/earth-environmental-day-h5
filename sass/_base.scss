@@ -1,0 +1,80 @@
+/*
+ * minxin, public, variables
+ */
+
+$default-background-size: 100% 100%;
+
+@font-face {
+	font-family: "fangzheng";
+	src: url('../assets/font/fangzheng.ttf');
+}
+
+// minxin
+@mixin bg($url) {
+	background-image: url($url);
+	background-size: 100% 100%;
+	background-repeat: no-repeat;
+}
+
+@mixin size {
+	width: 100%;
+	height: 100%;
+	border: 0;
+	margin: 0;
+	overflow: hidden;
+}
+
+@mixin pos($top, $left) {
+	position: absolute;
+	top: $top;
+	left: $left;
+}
+
+@mixin wh($w, $h) {
+	width: $w;
+	height: $h;
+}
+
+@mixin center{
+	-ms-transform: translate(-50%,-50%);
+	-moz-transform: translate(-50%,-50%);
+	-o-transform: translate(-50%,-50%);
+	transform: translate(-50%,-50%);
+}
+
+@mixin text_align($dire){
+	text-align: $dire;
+}
+
+@mixin keyframes($animationName) {
+	@-webkit-keyframes #{$animationName} {
+		@content;
+	}
+	@-moz-keyframes #{$animationName} {
+		@content;
+	}
+	@-o-keyframes #{$animationName} {
+		@content;
+	}
+	@keyframes #{$animationName} {
+		@content;
+	}
+}
+
+
+@mixin scorePadding{
+	background: #fff;
+	padding: 0.15rem 0.2rem;
+	border-radius: 14px;
+	opacity: 0.8;
+	border: 4px solid #00CC66;
+}
+
+.hidden {
+	display: none;
+}
+
+// variables
+$white: #fff;
+
+$black: #000;
