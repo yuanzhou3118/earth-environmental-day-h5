@@ -9,47 +9,8 @@ class JSSDK {
   }
 
   public function getSignPackage($url) {
-//      $mysqli = new mysqli('hdm186864208.my3w.com', 'hdm186864208', 'huitech13579', 'hdm186864208_db');
-//
-//      if (mysqli_connect_errno()) {
-//          error_log('Failed to connect to MySQL,error:' . mysqli_connect_error());
-//
-//          return array('result' => mysqli_connect_error());
-//      }
-//
-//      $mysqli->query('SET NAMES UTF8');
-//
-//      $data = array();
-//
-//      if ($stmt = $mysqli->prepare('SELECT access_token,jsapi_ticket,created_at FROM weixin_session')) {
-//          $stmt->execute();
-//
-//          $stmt->bind_result($accessToken,$jsApiTicket,$createdAt);
-//
-//          while ($stmt->fetch()) {
-//              $arr = array(
-//                  'access_token' => $accessToken,
-//                  'jsapi_ticket' => $jsApiTicket,
-//                  'created_at' => $createdAt
-//              );
-//              array_push($data, $arr);
-//          }
-//
-//          $stmt->close();
-//      }
-//
-//      $mysqli->close();
-//      $data = $data[0];
-
-//      if($data&&(time()>strtotime($data['created_at'])+7200)){//如果有数据，并且在两小时以内
-//          $jsapiTicket = $data['jsapi_ticket'];
-//      } else{
-          $jsapiTicket = $this->getJsApiTicket();
-//      }
-    // 注意 URL 一定要动态获取，不能 hardcode.
+    $jsapiTicket = $this->getJsApiTicket();
     $protocol = (!empty($_SERVER['HTTPS']) && $_SERVER['HTTPS'] !== 'off' || $_SERVER['SERVER_PORT'] == 443) ? "https://" : "http://";
-//    $url = "$protocol$_SERVER[HTTP_HOST]$_SERVER[REQUEST_URI]";
-//    $url = "http://www.i4sp.cn/YSL/nurun/2015/earth-environmental-day-h5/index.html";
 
     $timestamp = time();
     $nonceStr = $this->createNonceStr();
@@ -98,49 +59,7 @@ class JSSDK {
     } else {
       $ticket = $data->jsapi_ticket;
     }
-
-//      $mysqli = new mysqli('hdm186864208.my3w.com', 'hdm186864208', 'huitech13579', 'hdm186864208_db');
-//
-//      if (mysqli_connect_errno()) {
-//          error_log('Failed to connect to MySQL,error:' . mysqli_connect_error());
-//
-//          return array('result' => 0);
-//      }
-//
-//      $mysqli->query('SET NAMES UTF8');
-//
-//      $time = date('Y-m-d H:i:s', time());
-//
-//      $count = 0;
-//
-//      $deleteCount = 0;
-//
-//      if ($stmt = $mysqli->prepare('TRUNCATE table weixin_session')
-//      ) {
-//          $stmt->execute();
-//
-//          $deleteCount = $stmt->affected_rows;
-//
-//          $stmt->close();
-//      }
-//
-//      if ($stmt = $mysqli->prepare('INSERT INTO weixin_session(access_token, jsapi_ticket, created_at) VALUES(?, ?, ?)')
-//      ) {
-//          $stmt->bind_param('sss', $accessToken, $ticket, $time);
-//          $stmt->execute();
-//
-//          $count = $stmt->affected_rows;
-//
-//          $stmt->close();
-//      }
-//
-//      $mysqli->close();
-
-//      if ($count < 1||$deleteCount < 1) {
-//          return $ticket;//保存失败。
-//      } else {
-          return $ticket;//保存成功。
-//      }
+      return $ticket;//保存成功。
   }
 
   private function getAccessToken() {
